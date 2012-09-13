@@ -1,6 +1,6 @@
 {
 	"name": "wpt",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"author": "Tobias Koppers @sokra",
 	"dependencies": {
 		"optimist": "0.3.x",
@@ -8,6 +8,7 @@
 		"enhanced-require": "0.2.x",
 		"json-loader": "0.1.x"
 	},
+	"bin": "./bin/wpt.js",
 	"licenses": [
 		{
 			"type": "MIT",
