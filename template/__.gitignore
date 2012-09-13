@@ -1,0 +1,11 @@
+/assets
+/dev-server.html
+/index.html
+/cache.manifest
+/publishedStats.json
+/_template
+/node_modules
+/publish.bat
+/publish.sh
+/dev-server.bat
+/dev-server.sh

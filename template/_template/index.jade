@@ -1,0 +1,8 @@
+- require = require("enhanced-require")(module);
+!!! html
+html(manifest=cacheManifestPublicPath)
+	head
+		!= require("../app/head.jade")()
+		script(type="text/javascript", charset="utf-8", src=assetsPublicPath)
+	body
+		!= require("../app/body.jade")()
