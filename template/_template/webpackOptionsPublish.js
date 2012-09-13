@@ -4,9 +4,9 @@ module.exports = function(options) {
 	options.publicPrefix = "assets/";
 	options.publicPrefixCacheManifest = "";
 	options.minimize = true;
-	addExtension(options.extensions, ".min.js", ".js");
-	addExtension(options.extensions, ".web.min.js", ".web.js");
-	addExtension(options.extensions, ".webpack.min.js", ".webpack.js");
+	addExtension(options.resolve.extensions, ".min.js", ".js");
+	addExtension(options.resolve.extensions, ".web.min.js", ".web.js");
+	addExtension(options.resolve.extensions, ".webpack.min.js", ".webpack.js");
 }
 
 function addExtension(list, newExtension, before) {

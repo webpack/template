@@ -8,20 +8,20 @@ module.exports = {
 	context: path.join(__dirname, ".."),
 	resolve: {
 		alias: {},
-		paths: []
+		paths: [],
+		extensions: [
+			"",
+			".webpack.coffee",
+			".webpack.js",
+			".web.coffee",
+			".web.js",
+			".coffee",
+			".js"
+		],
 	},
 	parse: {
 		overwrites: {}
 	},
-	extensions: [
-		"",
-		".webpack.coffee",
-		".webpack.js",
-		".web.coffee",
-		".web.js",
-		".coffee",
-		".js"
-	],
 	postprocess: {},
 	postLoaders: [],
 	preLoaders: []
