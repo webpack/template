@@ -20,7 +20,7 @@ author: Your Name
 
 > cd my-test-app
 
-> webpack-template install http://webpack.github.com/webpack-template-modules/jquery
+> webpack-template install jquery
 Installing jquery webpack-template-module (wtm)...
 Done. You need to republish or restart the dev-server.
 

@@ -1,5 +1,5 @@
 {
-	"name": "<<<addName>>>",
+	"name": "<<<appName>>>",
 	"version": "0.1.0",
 	"author": "<<<author>>>",
 	"devDependencies": {
@@ -12,8 +12,8 @@
 	},
 	"licenses": [
 		{
-			"type": "<<<licenseType:MIT>>>",
-			"url": "<<<licenseUrl:http://www.opensource.org/licenses/mit-license.php>>>"
+			"type": "<<<licenseType>>>",
+			"url": "<<<licenseUrl>>>"
 		}
 	],
 	"maintainers": [
@@ -27,9 +27,12 @@
 		"modules": {
 		},
 		"options": {
-			"cacheManifest": true,
-			"appName": "unnamed",
-			"author": "nobody"
+			"cacheManifest": false,
+			"appName": "",
+			"author": "",
+			"authorUrl": "",
+			"licenseType": "MIT",
+			"licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
 		}
 	}
 }
