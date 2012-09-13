@@ -1,1 +1,7 @@
 /node_modules
+/template/assets
+/template/dev-server.html
+/template/index.html
+/template/cache.manifest
+/template/publishedStats.json
+/template/node_modules

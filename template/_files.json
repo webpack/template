@@ -1,0 +1,39 @@
+{
+	"README.md": 1,
+	"webpackOptions.js": 1,
+	"webpackOptionsDevServer.js": 1,
+	"webpackOptionsPublish.js": 1,
+	"publish.sh": 1,
+	"publish.bat": 1,
+	"dev-server.sh": 1,
+	"dev-server.bat": 1,
+	".gitignore": {
+		"overwrite": false,
+		"file": "__.gitignore"
+	},
+	"web_modules": {
+		"directory": true
+	},
+	"app": {
+		"directory": true,
+		"than": {
+			"app/app.js": 1
+		}
+	},
+	"_template": {
+		"directory": true,
+		"than": {
+			"_template/webpackOptions.js": true,
+			"_template/webpackOptionsDevServer.js": true,
+			"_template/webpackOptionsPublish.js": true,
+			"_template/devServer.js": true,
+			"_template/publish.js": true,
+			"_template/index.jade": true,
+			"_template/entry.js": true,
+			"_template/loadWebpackOptions.js": true,
+			"_template/modules": {
+				"directory": true
+			}
+		}
+	}
+}

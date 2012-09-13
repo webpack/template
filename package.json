@@ -1,0 +1,23 @@
+{
+	"name": "wpt",
+	"version": "0.1.0",
+	"author": "Tobias Koppers @sokra",
+	"dependencies": {
+		"optimist": "0.3.x",
+		"read": "1.0.x",
+		"enhanced-require": "0.2.x",
+		"json-loader": "0.1.x"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/mit-license.php"
+		}
+	],
+	"maintainers": [
+		{
+			"name": "Tobias Koppers",
+			"url": "https://github.com/sokra"
+		}
+	]
+}
