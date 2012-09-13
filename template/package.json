@@ -23,9 +23,8 @@
 		}
 	],
 	"webpackTemplate": {
-		"version": "0.1.0",
-		"modules": {
-		},
+		"version": "XXX",
+		"modules": {},
 		"options": {
 			"cacheManifest": false,
 			"appName": "",
