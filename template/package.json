@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"author": "<<<author>>>",
 	"devDependencies": {
+		"wpt": "0.1.x",
 		"webpack": "0.6.x",
 		"webpack-dev-middleware": "0.6.x",
 		"enhanced-require": "0.2.x",
@@ -29,7 +30,7 @@
 			"cacheManifest": false,
 			"appName": "",
 			"author": "",
-			"authorUrl": "",
+			"authorUrl": "https://github.com/",
 			"licenseType": "MIT",
 			"licenseUrl": "http://www.opensource.org/licenses/mit-license.php"
 		}

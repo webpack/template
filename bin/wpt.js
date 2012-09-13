@@ -14,7 +14,7 @@ var argv = require("optimist")
 	.usage("wpt " + version + "\n" +
 		"Commands:\n" +
 		"* create - Create a new web app in a subdirectory.\n" +
-		"* init - Create a new web app in the current directory.\n" +
+		"* init - Inits a existing web app in the current directory.\n" +
 		"* install - Install a webpack-template-module (wtm).\n" +
 		"* uninstall - Unistall a webpack-template-module.\n" +
 		"* update - Updates the web app template.\n" +
