@@ -25,7 +25,7 @@ webpack(path.join(__dirname, "entry.js"), options, function(err, stats) {
 			options.publicPrefix +
 			options.output.replace(/\[hash\]/g, stats.hash),
 		cacheManifestPublicPath: config.options.cacheManifest &&
-			(options.publicPrefix + "cache.manifest") || null,
+			(options.publicPrefixCacheManifest + "cache.manifest") || null,
 		type: "publish",
 		config: config.options,
 	};

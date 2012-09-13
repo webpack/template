@@ -1,7 +1,7 @@
 {
-	"name": "<<<APP_NAME>>>",
+	"name": "<<<addName>>>",
 	"version": "0.1.0",
-	"author": "<<<AUTHOR_NAME>>>",
+	"author": "<<<author>>>",
 	"devDependencies": {
 		"webpack": "0.6.x",
 		"webpack-dev-middleware": "0.6.x",
@@ -10,6 +10,18 @@
 		"json-loader": "0.1.x",
 		"express": "3.0.x"
 	},
+	"licenses": [
+		{
+			"type": "<<<licenseType:MIT>>>",
+			"url": "<<<licenseUrl:http://www.opensource.org/licenses/mit-license.php>>>"
+		}
+	],
+	"maintainers": [
+		{
+			"name": "<<<author>>>",
+			"url": "<<<authorUrl>>>"
+		}
+	],
 	"webpackTemplate": {
 		"version": "0.1.0",
 		"modules": {
