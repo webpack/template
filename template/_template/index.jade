@@ -2,7 +2,11 @@
 !!! html
 html(manifest=cacheManifestPublicPath)
 	head
+		- try {
 		!= require("../app/head.jade")()
+		- } catch(e) {}
 		script(type="text/javascript", charset="utf-8", src=assetsPublicPath)
 	body
+		- try {
 		!= require("../app/body.jade")()
+		- } catch(e) {}
