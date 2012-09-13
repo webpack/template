@@ -14,7 +14,7 @@ var app = new express();
 var rootDir = path.join(__dirname, "..");
 
 var options = require("./loadWebpackOptions")("DevServer");
-var config = require("../_templateConfig.json");
+var config = require("../package.json").webpackTemplate;
 
 // check for errors in webpackOptions
 if(/\[hash\]/.test(options.output))

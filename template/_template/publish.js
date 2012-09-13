@@ -10,7 +10,7 @@ var indexTemplate = require("./index.jade");
 var rootDir = path.join(__dirname, "..");
 
 var options = require("./loadWebpackOptions")("Publish");
-var config = require("../_templateConfig.json");
+var config = require("../package.json").webpackTemplate;
 
 webpack(path.join(__dirname, "entry.js"), options, function(err, stats) {
 	if(err) throw err;

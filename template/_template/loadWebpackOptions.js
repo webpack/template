@@ -4,19 +4,36 @@ module.exports = function(type) {
 	var typedOptions = require("./webpackOptions"+type);
 	var userTypedOptions = require("../webpackOptions"+type);
 
-	userOptions(options);
-	typedOptions(options);
-	userTypedOptions(options);
+	var config = require("../package.json").webpackTemplate;
 
-	var config = require("../_templateConfig.json");
-
-	config.webpackOptions.forEach(function(module) {
-		var moduleOptions = require(path.join(__dirname, "modules", module, "webpackOptions"));
+	// "modules: {
+	//   "jquery": {
+	//     installUrl: "http://webpack.github.com/wtms/jquery.json",
+	//     version: "1.8.1",
+	//     versionUrl: "https://raw.github.com/webpack/jquery-wtm/v1.8.1/package.json",
+	//     manual: true,
+	//     references: 0
+	//   }
+	// }
+	Object.keys(config.modules).forEach(function(module) {
+		try {
+			var moduleOptions = require(path.join(__dirname, "modules", module, "webpackOptions"));
+		} catch(e) { return }
 		moduleOptions(options);
 	});
-	config["webpackOptions"+type].forEach(function(module) {
-		var moduleTypedOptions = require(path.join(__dirname, "modules", module, "webpackOptions"+type));
+
+	userOptions(options);
+
+	typedOptions(options);
+
+	Object.keys(config.modules).forEach(function(module) {
+		try {
+			var moduleTypedOptions = require(path.join(__dirname, "modules", module, "webpackOptions"+type));
+		} catch(e) { return }
 		moduleTypedOptions(options);
 	});
+
+	userTypedOptions(options);
+
 	return options;
 }

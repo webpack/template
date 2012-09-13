@@ -9,5 +9,15 @@
 		"jade-loader": "0.1.x",
 		"json-loader": "0.1.x",
 		"express": "3.0.x"
+	},
+	"webpackTemplate": {
+		"version": "0.1.0",
+		"modules": {
+		},
+		"options": {
+			"cacheManifest": true,
+			"appName": "unnamed",
+			"author": "nobody"
+		}
 	}
 }
