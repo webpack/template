@@ -1,0 +1,80 @@
+{
+	"options": {
+		"cacheManifest": {
+			"boolean": true,
+			"default": false,
+			"create": true,
+			"description": "Generate a cache.manifest for your web app",
+			"requireInit": false
+		},
+		"customWebpackOptions": {
+			"boolean": true,
+			"default": false,
+			"description": "Add files for user-defined webpack options",
+			"requireInit": true
+		},
+		"appName": {
+			"default": "",
+			"required": true,
+			"description": "The name of your app",
+			"packageJson": "name"
+		},
+		"author": {
+			"default": "",
+			"create": true,
+			"description": "Your Name",
+			"packageJson": "author"
+		}
+	},
+	"files": {
+		"README.md": 1,
+		"webpackOptions.js": {
+			"file": "webpackOptions.js",
+			"overwrite": false,
+			"ifOption": "customWebpackOptions"
+		},
+		"webpackOptionsDevServer.js": {
+			"file": "webpackOptionsDevServer.js",
+			"overwrite": false,
+			"ifOption": "customWebpackOptions"
+		},
+		"webpackOptionsPublish.js": {
+			"file": "webpackOptionsPublish.js",
+			"overwrite": false,
+			"ifOption": "customWebpackOptions"
+		},
+		"publish.sh": 1,
+		"publish.bat": 1,
+		"dev-server.sh": 1,
+		"dev-server.bat": 1,
+		".gitignore": {
+			"overwrite": false,
+			"file": "__.gitignore"
+		},
+		"web_modules": {
+			"directory": true
+		},
+		"app": {
+			"directory": true,
+			"than": {
+				"app/app.js": 1
+			}
+		},
+		"_template": {
+			"directory": true,
+			"than": {
+				"_template/webpackOptions.js": true,
+				"_template/webpackOptionsDevServer.js": true,
+				"_template/webpackOptionsPublish.js": true,
+				"_template/devServer.js": true,
+				"_template/publish.js": true,
+				"_template/index.jade": true,
+				"_template/entry.js": true,
+				"_template/loadWebpackOptions.js": true,
+				"_template/modules": {
+					"directory": true
+				}
+			}
+		}
+	}
+}

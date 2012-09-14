@@ -13,26 +13,13 @@
 	},
 	"licenses": [
 		{
-			"type": "<<<licenseType>>>",
-			"url": "<<<licenseUrl>>>"
-		}
-	],
-	"maintainers": [
-		{
-			"name": "<<<author>>>",
-			"url": "<<<authorUrl>>>"
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/mit-license.php"
 		}
 	],
 	"webpackTemplate": {
 		"version": "XXX",
 		"modules": {},
-		"options": {
-			"cacheManifest": false,
-			"appName": "",
-			"author": "",
-			"authorUrl": "https://github.com/",
-			"licenseType": "MIT",
-			"licenseUrl": "http://www.opensource.org/licenses/mit-license.php"
-		}
+		"options": {}
 	}
 }

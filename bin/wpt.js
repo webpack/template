@@ -10,16 +10,29 @@ try {
 
 var version = require("../package.json").version;
 
+var wptIntro =
+'  _         _ ' + '  ___   '+ ' _____    \n' +
+' | |       | |' + ' |   \\  '+'|_   _|   \n' +
+' | |  ___  | |' + ' | () ) '+ '  | |     \n' +
+' |  \\/ _ \\/  |'+' |  _/  '+ '  | |     \n' +
+'  \\   / \\   / '+' | |    '+ '  | |     \n' +
+'   \\_/   \\_/  '+' |_|    '+ '  |_| ' + version + "\n" +
+'      Web     ' + ' Pack - '+ 'Template\n';
+
 var argv = require("optimist")
-	.usage("wpt " + version + "\n" +
+	.usage(wptIntro +
 		"Commands:\n" +
 		"* create - Create a new web app in a subdirectory.\n" +
 		"* init - Inits a existing web app in the current directory.\n" +
+		"         It updates the template if mismatched version.\n" +
 		"* install - Install a webpack-template-module (wtm).\n" +
 		"* uninstall - Unistall a webpack-template-module.\n" +
-		"* update - Updates the web app template.\n" +
 		"* update <wtm> - Updates a webpack-template-module.\n" +
-		"* update all - Updates template and all wtms.\n" +
+		"* update all - Updates all wtms.\n" +
+		"* enable - Enable an boolean option.\n" +
+		"* disable - Disable an boolean option.\n" +
+		"* get - Reads the value of an option.\n" +
+		"* set - Sets the value of an string option.\n" +
 		"")
 
 	.demand(1)
@@ -27,7 +40,7 @@ var argv = require("optimist")
 
 var cmd = argv._.shift();
 
-console.log("wpt " + version);
+console.log(wptIntro);
 
 switch(cmd) {
 	case "create": return require("../lib/create")(argv);
@@ -35,5 +48,9 @@ switch(cmd) {
 	case "install": return require("../lib/install")(argv);
 	case "uninstall": return require("../lib/uninstall")(argv);
 	case "update": return require("../lib/update")(argv);
+	case "enable": return require("../lib/enable")(argv, true);
+	case "disable": return require("../lib/enable")(argv, false);
+	case "get": return require("../lib/get")(argv);
+	case "set": return require("../lib/set")(argv);
 }
 

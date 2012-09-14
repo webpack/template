@@ -1,11 +1,20 @@
 module.exports = function(type) {
 	var options = require("./webpackOptions");
-	var userOptions = require("../webpackOptions");
-	var typedOptions = require("./webpackOptions"+type);
-	var userTypedOptions = require("../webpackOptions"+type);
+	var userOptions = null, typedOptions = null, userTypedOptions = null;
 
 	var config = require("../package.json").webpackTemplate;
 
+	
+	try {
+		userOptions = require("../webpackOptions");
+	} catch(e) {}
+	try {
+		typedOptions = require("./webpackOptions"+type);
+	} catch(e) {}
+	try {
+		userTypedOptions = require("../webpackOptions"+type)
+	} catch(e) {}
+	
 	// "modules: {
 	//   "jquery": {
 	//     installUrl: "http://webpack.github.com/wtms/jquery.json",
@@ -22,9 +31,9 @@ module.exports = function(type) {
 		moduleOptions(options);
 	});
 
-	userOptions(options);
+	userOptions && userOptions(options);
 
-	typedOptions(options);
+	typedOptions && typedOptions(options);
 
 	Object.keys(config.modules).forEach(function(module) {
 		try {
@@ -33,7 +42,7 @@ module.exports = function(type) {
 		moduleTypedOptions(options);
 	});
 
-	userTypedOptions(options);
+	userTypedOptions && userTypedOptions(options);
 
 	return options;
 }
