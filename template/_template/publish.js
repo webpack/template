@@ -29,7 +29,6 @@ webpack(path.join(__dirname, "entry.js"), options, function(err, stats) {
 		type: "publish",
 		config: config.options,
 	};
-	templateParams.templateParams = templateParams;
 	fs.writeFile(
 		path.join(rootDir, "index.html"),
 		indexTemplate(templateParams),

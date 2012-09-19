@@ -1,7 +1,8 @@
 var path = require("path");
+var wtpOptions = require("../package.json").webpackTemplate.options;
 module.exports = function(options) {
-	options.outputDirectory = path.join(__dirname, "..", "assets"),
-	options.publicPrefix = "assets/";
+	options.outputDirectory = path.join(__dirname, "..", "public", "assets"),
+	options.publicPrefix = wtpOptions.nodeServer ? "assets/" : "public/assets/";
 	options.publicPrefixCacheManifest = "";
 	options.minimize = true;
 	addExtension(options.resolve.extensions, ".min.js", ".js");

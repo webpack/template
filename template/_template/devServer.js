@@ -1,35 +1,17 @@
 #!/usr/bin/env node
 
-require = require("enhanced-require")(module)
 var fs = require("fs");
 var path = require("path");
-var webpackDevMiddleware = require("webpack-dev-middleware");
-var express = require("express");
-var indexTemplate = require("./index.jade");
+var WebpackDevServer = require("webpack-dev-server");
+var indexTemplate = require("enhanced-require")(module)("./index.jade");
 
-var port = process.argv[2] && parseInt(process.argv[2], 10) || 8081;
-
-var app = new express();
-
-var rootDir = path.join(__dirname, "..");
+var Server = null;
+try { Server = require("../lib/Server"); } catch(e) {}
 
 var options = require("./loadWebpackOptions")("DevServer");
 var config = require("../package.json").webpackTemplate;
 
-// check for errors in webpackOptions
-if(/\[hash\]/.test(options.output))
-	throw new Error("devServer: [hash] is not allowed.");
-
-// update publicPrefix
-options.publicPrefix = "http://localhost:" + port + "/";
-
-// use webpack middleware ware
-app.configure(function() {
-	app.use(webpackDevMiddleware(path.join(__dirname, "entry.js"), options));
-});
-
-// listen
-app.listen(port);
+options.publicPrefix = "http://localhost:8081/assets/";
 
 // generate the dev-server.html file
 var templateParams = {
@@ -40,11 +22,34 @@ var templateParams = {
 	type: "dev-server",
 	config: config.options
 };
-templateParams.templateParams = templateParams;
-fs.writeFile(
-	path.join(rootDir, "dev-server.html"),
-	indexTemplate(templateParams),
-	throwOnErr);
-function throwOnErr(err) {
-	if(err) throw err;
+var indexHtml = indexTemplate(templateParams);
+
+function MyWebpackDevServer() {
+	WebpackDevServer.apply(this, arguments);
 }
+
+MyWebpackDevServer.prototype = Object.create(WebpackDevServer.prototype);
+
+if(!Server) {
+	console.log("- Serving static content.");
+	MyWebpackDevServer.prototype.serveContent = function(req, res) {
+		res.status = 200;
+		res.setHeader("Content-Type", "text/html; charset=utf-8")
+		res.end(indexHtml, "utf-8");
+	}
+} else {
+	console.log("- Starting your node.js server on port 8080.");
+	var server = new Server({
+		indexHtml: indexHtml
+	});
+	server.listen(8080);
+}
+
+console.log("- dev-server on port 8081.");
+console.log("> Open http://localhost:8081/ in your browser.");
+console.log("\n");
+var devServer = new MyWebpackDevServer(path.join(__dirname, "entry.js"), {
+	contentUrl: "http://localhost:8080/",
+	webpack: options
+});
+devServer.listen(8081);

@@ -1,18 +1,5 @@
 {
 	"options": {
-		"cacheManifest": {
-			"boolean": true,
-			"default": false,
-			"create": true,
-			"description": "Generate a cache.manifest for your web app",
-			"requireInit": false
-		},
-		"customWebpackOptions": {
-			"boolean": true,
-			"default": false,
-			"description": "Add files for user-defined webpack options",
-			"requireInit": true
-		},
 		"appName": {
 			"default": "",
 			"required": true,
@@ -24,6 +11,26 @@
 			"create": true,
 			"description": "Your Name",
 			"packageJson": "author"
+		},
+		"nodeServer": {
+			"boolean": true,
+			"default": false,
+			"create": true,
+			"description": "Add node.js Server",
+			"requireInit": true
+		},
+		"customWebpackOptions": {
+			"boolean": true,
+			"default": false,
+			"description": "Add files for user-defined webpack options",
+			"requireInit": true
+		},
+		"cacheManifest": {
+			"boolean": true,
+			"default": false,
+			"create": true,
+			"description": "Generate a cache.manifest for your web app",
+			"requireInit": false
 		}
 	},
 	"files": {
@@ -42,6 +49,21 @@
 			"file": "webpackOptionsPublish.js",
 			"overwrite": false,
 			"ifOption": "customWebpackOptions"
+		},
+		"server.js": {
+			"file": "server.js",
+			"overwrite": true,
+			"ifOption": "nodeServer"
+		},
+		"server.sh": {
+			"file": "server.sh",
+			"overwrite": true,
+			"ifOption": "nodeServer"
+		},
+		"server.bat": {
+			"file": "server.bat",
+			"overwrite": true,
+			"ifOption": "nodeServer"
 		},
 		"publish.sh": 1,
 		"publish.bat": 1,
@@ -73,6 +95,17 @@
 				"_template/loadWebpackOptions.js": true,
 				"_template/modules": {
 					"directory": true
+				}
+			}
+		},
+		"lib": {
+			"directory": true,
+			"ifOption": "nodeServer",
+			"than": {
+				"lib/Server.js": {
+					"file": "lib/Server.js",
+					"overwrite": false,
+					"ifOption": "nodeServer"
 				}
 			}
 		}

@@ -1,20 +1,20 @@
-# development only:
-/dev-server.html
-/publishedStats.json
-
 # will be installed by "wpt init"
 /publish.bat
 /publish.sh
 /dev-server.bat
 /dev-server.sh
+/server.bat
+/server.sh
 /_template
 
 # will be installed by "npm install"
 /node_modules
 
-# will be created by publishing
+# will be created by publishing or "wpt init"
 # you may remove these lines if you want to publish
 #  to a git repo. (i. e. in the gh-pages branch)
-/assets
+/publishedStats.json
+/public
 /index.html
 /cache.manifest
+/server.js

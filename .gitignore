@@ -1,5 +1,5 @@
 /node_modules
-/template/assets
+/template/public
 /template/dev-server.html
 /template/index.html
 /template/cache.manifest

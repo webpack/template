@@ -3,10 +3,10 @@
 html(manifest=cacheManifestPublicPath)
 	head
 		- try {
-		!= require("../app/head.jade")()
+		!= require("../app/head.jade")(locals)
 		- } catch(e) {}
 		script(type="text/javascript", charset="utf-8", src=assetsPublicPath)
 	body
 		- try {
-		!= require("../app/body.jade")()
+		!= require("../app/body.jade")(locals)
 		- } catch(e) {}
