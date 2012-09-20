@@ -1,3 +1,4 @@
+var path = require("path");
 module.exports = function(type) {
 	var options = require("./webpackOptions");
 	var userOptions = null, typedOptions = null, userTypedOptions = null;
@@ -27,6 +28,7 @@ module.exports = function(type) {
 	Object.keys(config.modules).forEach(function(module) {
 		try {
 			var moduleOptions = require(path.join(__dirname, "modules", module, "webpackOptions"));
+			console.log("- included options from " + module + " wpt-module.");
 		} catch(e) { return }
 		moduleOptions(options);
 	});
@@ -38,6 +40,7 @@ module.exports = function(type) {
 	Object.keys(config.modules).forEach(function(module) {
 		try {
 			var moduleTypedOptions = require(path.join(__dirname, "modules", module, "webpackOptions"+type));
+			console.log("- included specific options from " + module + " wpt-module.");
 		} catch(e) { return }
 		moduleTypedOptions(options);
 	});
