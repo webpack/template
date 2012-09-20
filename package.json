@@ -1,6 +1,6 @@
 {
 	"name": "wpt",
-	"version": "0.3.1",
+	"version": "0.3.2",
 	"author": "Tobias Koppers @sokra",
 	"dependencies": {
 		"optimist": "0.3.x",
