@@ -6,7 +6,7 @@ var WebpackDevServer = require("webpack-dev-server");
 var indexTemplate = require("enhanced-require")(module)("./index.jade");
 
 var Server = null;
-try { Server = require("../lib/Server"); } catch(e) {}
+try { Server = require("../app/lib/Server"); } catch(e) {}
 
 var options = require("./loadWebpackOptions")("DevServer");
 var config = require("../package.json").webpackTemplate;

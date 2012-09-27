@@ -73,13 +73,30 @@
 			"overwrite": false,
 			"file": "__.gitignore"
 		},
-		"web_modules": {
-			"directory": true
-		},
 		"app": {
 			"directory": true,
 			"than": {
-				"app.js": 1
+				"app.js": 1,
+				"web_modules": {
+					"directory": true
+				},
+				"node_modules": {
+					"directory": true
+				},
+				"lib": {
+					"directory": true,
+					"ifOption": "nodeServer",
+					"than": {
+						"Server.js": {
+							"file": "Server.js",
+							"overwrite": false,
+							"ifOption": "nodeServer"
+						},
+						"node_modules": {
+							"directory": true
+						}
+					}
+				}
 			}
 		},
 		"_template": {
@@ -95,17 +112,6 @@
 				"loadWebpackOptions.js": true,
 				"modules": {
 					"directory": true
-				}
-			}
-		},
-		"lib": {
-			"directory": true,
-			"ifOption": "nodeServer",
-			"than": {
-				"Server.js": {
-					"file": "Server.js",
-					"overwrite": false,
-					"ifOption": "nodeServer"
 				}
 			}
 		}

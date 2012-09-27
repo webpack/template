@@ -8,7 +8,7 @@
 
 var path = require("path");
 
-var Server = require("./lib/Server");
+var Server = require("./app/lib/Server");
 var stats = require("./publishedStats.json");
 
 var server = new Server({
