@@ -93,6 +93,7 @@
 							"ifOption": "nodeServer"
 						},
 						"node_modules": {
+							"ifOption": "nodeServer",
 							"directory": true
 						}
 					}
