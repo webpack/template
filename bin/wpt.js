@@ -2,7 +2,7 @@
 
 // Local version replace global one
 try {
-	var localWpt = require.resolve(path.join(process.cwd(), "node_modules", "wpt", "bin", "wpt.js"));
+	var localWpt = require.resolve(require("path").join(process.cwd(), "node_modules", "wpt", "bin", "wpt.js"));
 	if(__filename != localWpt) {
 		return require(localWpt);
 	}
