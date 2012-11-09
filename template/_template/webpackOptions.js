@@ -7,7 +7,9 @@ module.exports = {
 	events: events,
 	context: path.join(__dirname, ".."),
 	resolve: {
-		alias: {},
+		alias: {
+			"app": path.join(__dirname, "..", "app")
+		},
 		paths: [],
 		extensions: [
 			"",
@@ -18,12 +20,12 @@ module.exports = {
 			".coffee",
 			".js"
 		],
+		modulesDirectories: ["web_modules", "modules", "node_modules"],
+		postprocess: {}
 	},
 	parse: {
 		overwrites: {}
 	},
-	postprocess: {},
 	postLoaders: [],
 	preLoaders: []
 };
-// INSERT EVENTS HERE

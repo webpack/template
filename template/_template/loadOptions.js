@@ -1,21 +1,21 @@
 var path = require("path");
-module.exports = function(type) {
-	var options = require("./webpackOptions");
+module.exports = function(category, type) {
+	var options = require("./"+category+"Options");
 	var userOptions = null, typedOptions = null, userTypedOptions = null;
 
 	var config = require("../package.json").webpackTemplate;
 
-	
+
 	try {
-		userOptions = require("../webpackOptions");
+		userOptions = require("../"+category+"Options");
 	} catch(e) {}
 	try {
-		typedOptions = require("./webpackOptions"+type);
+		typedOptions = require("./"+category+"Options"+type);
 	} catch(e) {}
 	try {
-		userTypedOptions = require("../webpackOptions"+type)
+		userTypedOptions = require("../"+category+"Options"+type)
 	} catch(e) {}
-	
+
 	// "modules: {
 	//   "jquery": {
 	//     installUrl: "http://webpack.github.com/wtms/jquery.json",
@@ -27,7 +27,7 @@ module.exports = function(type) {
 	// }
 	Object.keys(config.modules).forEach(function(module) {
 		try {
-			var moduleOptions = require(path.join(__dirname, "modules", module, "webpackOptions"));
+			var moduleOptions = require(path.join(__dirname, "modules", module, category+"Options"));
 			console.log("- included options from " + module + " wpt-module.");
 		} catch(e) { return }
 		moduleOptions(options);
@@ -39,7 +39,7 @@ module.exports = function(type) {
 
 	Object.keys(config.modules).forEach(function(module) {
 		try {
-			var moduleTypedOptions = require(path.join(__dirname, "modules", module, "webpackOptions"+type));
+			var moduleTypedOptions = require(path.join(__dirname, "modules", module, category+"Options"+type));
 			console.log("- included specific options from " + module + " wpt-module.");
 		} catch(e) { return }
 		moduleTypedOptions(options);

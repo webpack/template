@@ -19,10 +19,26 @@
 			"description": "Add node.js Server",
 			"requireInit": true
 		},
+		"hotServer": {
+			"boolean": true,
+			"default": false,
+			"description": "Enables hot code replacement in node.js Server"
+		},
+		"hotProductionServer": {
+			"boolean": true,
+			"default": false,
+			"description": "Enables hot code replacement in node.js Server also in production mode"
+		},
 		"customWebpackOptions": {
 			"boolean": true,
 			"default": false,
 			"description": "Add files for user-defined webpack options",
+			"requireInit": true
+		},
+		"customEnhancedRequireOptions": {
+			"boolean": true,
+			"default": false,
+			"description": "Add files for user-defined enhanced-require options",
 			"requireInit": true
 		},
 		"cacheManifest": {
@@ -49,6 +65,21 @@
 			"file": "webpackOptionsPublish.js",
 			"overwrite": false,
 			"ifOption": "customWebpackOptions"
+		},
+		"enhancedRequireOptions.js": {
+			"file": "enhancedRequireOptions.js",
+			"overwrite": false,
+			"ifOption": "customEnhancedRequireOptions"
+		},
+		"enhancedRequireOptionsDevServer.js": {
+			"file": "enhancedRequireOptionsDevServer.js",
+			"overwrite": false,
+			"ifOption": "customEnhancedRequireOptions"
+		},
+		"enhancedRequireOptionsProduction.js": {
+			"file": "enhancedRequireOptionsProduction.js",
+			"overwrite": false,
+			"ifOption": "customEnhancedRequireOptions"
 		},
 		"server.js": {
 			"file": "server.js",
@@ -80,7 +111,11 @@
 				"web_modules": {
 					"directory": true
 				},
+				"modules": {
+					"directory": true
+				},
 				"node_modules": {
+					"ifOption": "nodeServer",
 					"directory": true
 				},
 				"lib": {
@@ -92,9 +127,10 @@
 							"overwrite": false,
 							"ifOption": "nodeServer"
 						},
-						"node_modules": {
-							"ifOption": "nodeServer",
-							"directory": true
+						"Router.js": {
+							"file": "Router.js",
+							"overwrite": false,
+							"ifOption": "nodeServer"
 						}
 					}
 				}
@@ -106,11 +142,15 @@
 				"webpackOptions.js": true,
 				"webpackOptionsDevServer.js": true,
 				"webpackOptionsPublish.js": true,
+				"enhancedRequireOptions.js": true,
+				"enhancedRequireOptionsDevServer.js": true,
+				"enhancedRequireOptionsProduction.js": true,
+				"index.html": true,
 				"devServer.js": true,
 				"publish.js": true,
 				"index.jade": true,
 				"entry.js": true,
-				"loadWebpackOptions.js": true,
+				"loadOptions.js": true,
 				"modules": {
 					"directory": true
 				}

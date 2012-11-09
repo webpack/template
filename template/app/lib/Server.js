@@ -1,9 +1,9 @@
 var express = require("express");
 
 function Server(options) {
-	this.options = options;
+	this.options = options || {};
 	this.app = new express();
-	
+
 	this.app.configure(this.onConfigure.bind(this));
 	this.initRoutes(this.app);
 }
@@ -21,7 +21,7 @@ Server.prototype.onConfigure = function() {
 		this.app.use(express.static(this.options.publicPath, { maxAge: oneYear }));
 	}
 	// uncomment the next line to use the bodyParser middleware
-	// app.use(express.bodyParser());
+	// this.app.use(express.bodyParser());
 }
 
 Server.prototype.listen = function() {
@@ -29,12 +29,14 @@ Server.prototype.listen = function() {
 }
 
 Server.prototype.initRoutes = function(app) {
-	// Define your routes here
-	app.get("/", this.routeGetRoot.bind(this));
-}
+	var Router = require("./Router");
+	this.router = new Router(app);
 
-Server.prototype.routeGetRoot = function(req, res) {
-	res.status = 200;
-	res.setHeader("Content-Type", "text/html; charset=utf-8")
-	res.end(this.options.indexHtml, "utf-8");
+	if(module.hot) {
+		module.hot.accept("./Router", function() {
+			this.router.dispose();
+			Router = require("./Router");
+			this.router = new Router(app);
+		}.bind(this));
+	}
 }

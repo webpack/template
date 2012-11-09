@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
-require = require("enhanced-require")(module)
+var er = require("enhanced-require")(module, require("./loadOptions")("enhancedRequire", "Publish"));
+var options = require("./loadOptions")("webpack", "Publish");
 var fs = require("fs");
 var path = require("path");
 var webpack = require("webpack");
 var formatOutput = require("webpack/lib/formatOutput");
-var indexTemplate = require("./index.jade");
+var indexTemplate = er("./index.jade");
 
 var rootDir = path.join(__dirname, "..");
 
-var options = require("./loadWebpackOptions")("Publish");
 var config = require("../package.json").webpackTemplate;
 
 webpack(path.join(__dirname, "entry.js"), options, function(err, stats) {

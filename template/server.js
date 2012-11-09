@@ -8,13 +8,14 @@
 
 var path = require("path");
 
-var Server = require("./app/lib/Server");
-var stats = require("./publishedStats.json");
+var er = require("enhanced-require")(module, require("./_template/loadOptions")("enhancedRequire", "Production"));
+
+var Server = er("./app/lib/Server");
+var stats = er("./publishedStats.json");
 
 var server = new Server({
 	publishedStats: stats,
-	publicPath: path.join(__dirname, "public"),
-	indexHtml: require("fs").readFileSync(path.join(__dirname, "index.html"), "utf-8")
+	publicPath: path.join(__dirname, "public")
 });
 
 // TODO add Watcher here and issue server.updateOptions(...)

@@ -3,12 +3,11 @@
 var fs = require("fs");
 var path = require("path");
 var WebpackDevServer = require("webpack-dev-server");
-var indexTemplate = require("enhanced-require")(module)("./index.jade");
+var er = require("enhanced-require")(module, require("./loadOptions")("enhancedRequire", "DevServer"));
+var options = require("./loadOptions")("webpack", "DevServer");
 
-var Server = null;
-try { Server = require("../app/lib/Server"); } catch(e) {}
+var indexTemplate = er("./index.jade");
 
-var options = require("./loadWebpackOptions")("DevServer");
 var config = require("../package.json").webpackTemplate;
 
 options.publicPrefix = "http://localhost:8081/assets/";
@@ -23,6 +22,11 @@ var templateParams = {
 	config: config.options
 };
 var indexHtml = indexTemplate(templateParams);
+
+er.options.substitutions[er.resolve("raw!indexHtml")] = indexHtml;
+
+var Server = null;
+try { Server = er("../app/lib/Server"); } catch(e) {}
 
 function MyWebpackDevServer() {
 	WebpackDevServer.apply(this, arguments);
@@ -39,9 +43,7 @@ if(!Server) {
 	}
 } else {
 	console.log("- Starting your node.js server on port 8080.");
-	var server = new Server({
-		indexHtml: indexHtml
-	});
+	var server = new Server();
 	server.listen(8080);
 }
 

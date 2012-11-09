@@ -3,12 +3,14 @@
 	"version": "0.1.0",
 	"author": "<<<author>>>",
 	"devDependencies": {
-		"wpt": "0.4.x",
-		"webpack": "0.7.x",
-		"webpack-dev-server": "0.7.x",
-		"enhanced-require": "0.3.x",
+		"wpt": "0.5.x",
+		"webpack": "0.8.x",
+		"webpack-dev-server": "0.8.x",
+		"enhanced-require": "0.4.x",
+		"coffee-loader": "0.2.x",
 		"jade-loader": "0.2.x",
 		"json-loader": "0.2.x",
+		"raw-loader": "0.2.x",
 		"express": "3.0.x"
 	},
 	"licenses": [
