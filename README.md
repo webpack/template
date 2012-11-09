@@ -8,8 +8,10 @@ Features:
 * Update scaffolded web app if the template updates.
 * Include development server for just-in-time compiling (just edit the source and update your browser).
 * Includes all webpack features: Just require any resource (css, less, coffee, png).
-* Install webpack-template-modules, which add some stuff to the template (Coming soon)
- * i. e. jQuery, bootstrap, node.js server, etc.
+* Also supports a node.js Server. It is enhanced with enhanced-require, so you can use webpack features in node.
+* Supports hot code replacement on server side.
+* Install webpack-template-modules, which add some stuff to the template
+ * i. e. jQuery, bootstrap, etc.
 
 ``` text
 > npm install wpt -g
@@ -21,23 +23,20 @@ author: Your Name
 
 > cd my-test-app
 
-> wpt install jquery
-Installing jquery webpack-template-module (wtm)...
-Done.
-
-> wpt init
-Done.
-
-> wpt disable cacheManifest
-Done.
-
 > npm install
+
+> wpt install webpack/jquery-wpt-module
+Installing jquery wpt-module...
+Done.
+
+> wpt enable nodeServer
+Done.
 ...
+
+> dev-server
 
 > publish
 ...
 
-> index.html
+> server
 ```
-
-WIP: Just `wpt create` and `wpt init` work yet. Not wtms yet, sorry.
