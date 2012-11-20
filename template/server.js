@@ -20,4 +20,7 @@ var server = new Server({
 
 // TODO add Watcher here and issue server.updateOptions(...)
 
-server.listen(process.env.NODE_PORT || 8080);
+var port = process.env.NODE_PORT && parseInt(process.env.NODE_PORT, 10) ||
+	process.env.PORT && parseInt(process.env.PORT, 10) ||
+	8080;
+server.listen(port);
