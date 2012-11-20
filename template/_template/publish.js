@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
-var er = require("enhanced-require")(module, require("./loadOptions")("enhancedRequire", "Publish"));
-var options = require("./loadOptions")("webpack", "Publish");
 var fs = require("fs");
 var path = require("path");
+
+fs.exists = fs.exists || path.exists; // node 0.6 support
+fs.existsSync = fs.existsSync || path.existsSync; // node 0.6 support
+
+var er = require("enhanced-require")(module, require("./loadOptions")("enhancedRequire", "Publish"));
+var options = require("./loadOptions")("webpack", "Publish");
 var webpack = require("webpack");
 var formatOutput = require("webpack/lib/formatOutput");
 var indexTemplate = er("./index.jade");
