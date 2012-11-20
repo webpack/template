@@ -2,6 +2,10 @@
 
 var fs = require("fs");
 var path = require("path");
+
+fs.exists = fs.exists || path.exists; // node 0.6 support
+fs.existsSync = fs.existsSync || path.existsSync; // node 0.6 support
+
 var WebpackDevServer = require("webpack-dev-server");
 var er = require("enhanced-require")(module, require("./loadOptions")("enhancedRequire", "DevServer"));
 var options = require("./loadOptions")("webpack", "DevServer");
@@ -10,7 +14,11 @@ var indexTemplate = er("./index.jade");
 
 var config = require("../package.json").webpackTemplate;
 
-options.publicPrefix = "http://localhost:8081/assets/";
+var hasServer = fs.existsSync(path.join(__dirname, "..", "app", "lib", "Server"));
+
+var devPort = process.env.PORT && parseInt(process.env.PORT, 10) || 8081;
+
+options.publicPrefix = (hasServer ? "http://localhost:8081" : "") + "/assets/";
 
 // generate the dev-server.html file
 var templateParams = {
@@ -26,7 +34,8 @@ var indexHtml = indexTemplate(templateParams);
 er.options.substitutions[er.resolve("raw!indexHtml")] = indexHtml;
 
 var Server = null;
-try { Server = er("../app/lib/Server"); } catch(e) {}
+if(hasServer)
+	Server = er("../app/lib/Server");
 
 function MyWebpackDevServer() {
 	WebpackDevServer.apply(this, arguments);
@@ -47,11 +56,11 @@ if(!Server) {
 	server.listen(8080);
 }
 
-console.log("- dev-server on port 8081.");
-console.log("> Open http://localhost:8081/ in your browser.");
+console.log("- dev-server on port " + devPort + ".");
+console.log("> Open http://localhost:" + devPort + "/ in your browser.");
 console.log("\n");
 var devServer = new MyWebpackDevServer(path.join(__dirname, "entry.js"), {
 	contentUrl: "http://localhost:8080/",
 	webpack: options
 });
-devServer.listen(8081);
+devServer.listen(devPort);
