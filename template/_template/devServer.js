@@ -14,7 +14,7 @@ var indexTemplate = er("./index.jade");
 
 var config = require("../package.json").webpackTemplate;
 
-var hasServer = fs.existsSync(path.join(__dirname, "..", "app", "lib", "Server"));
+var hasServer = fs.existsSync(path.join(__dirname, "..", "app", "lib", "Server.js"));
 
 var devPort = process.env.PORT && parseInt(process.env.PORT, 10) || 8081;
 
